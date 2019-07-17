@@ -11,7 +11,7 @@ const ComentarioSchema = new Schema({
 	
 	alojamiento :{
 		type:Schema.Types.ObjectId,
-		ref:'alojamiento'
+		ref:'alojamientos'
 	},
 	usuario:{
 		type:Schema.Types.ObjectId,

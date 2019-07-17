@@ -1,0 +1,11 @@
+# import Usuario from "usuario.graphql"
+# import Alojamiento from "alojamiento.graphql"
+
+type Reservacion{
+    _id:ID
+    fechaInicio:String!
+    fechafin:String!
+    alojamiento:Alojamiento
+    usuario:Usuario
+    
+}

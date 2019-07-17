@@ -1,0 +1,51 @@
+#Alojamiento
+type Alojamiento{
+    _id:ID
+    descripcion:String!
+    numero_banos:Int!
+    numero_camas:Int!
+    numero_dormitorios:Int
+	numero_huespedes:Int!
+    precio:Int!
+    disposicion_huespedes:String
+    tipo_alojamiento:TIPOALOJAMIENTO
+    fotos:[String]
+    espacio_exclusivo:Boolean
+}
+
+input createAlojamientoInput {
+   _id:ID
+    descripcion:String!
+    numero_banos:Int!
+    numero_camas:Int!
+    numero_dormitorios:Int
+	numero_huespedes:Int!
+    precio:Int!
+    disposicion_huespedes:String
+    tipo_alojamiento:TIPOALOJAMIENTO
+    fotos:[String]
+    espacio_exclusivo:Boolean
+}
+
+input updateAlojamientoInput {
+    descripcion:String!
+    numero_banos:Int!
+    numero_camas:Int!
+    numero_dormitorios:Int
+	numero_huespedes:Int!
+    precio:Int!
+    disposicion_huespedes:String
+}
+
+enum TIPOALOJAMIENTO{
+    Departamento
+    Casa
+    Anexa
+}
+
+enum DISPOSICION{
+    Entero
+    Privado
+    Compartido
+}
+#Fin Alojamiento

@@ -1,0 +1,9 @@
+#Direccion
+type Direccion{
+    _id:ID
+    cCalle:String
+    cColonia:String
+    CEstado:String
+    cNumero:String
+	cPais:String
+}

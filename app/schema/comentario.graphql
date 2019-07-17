@@ -1,0 +1,16 @@
+# import Usuario from "usuario.graphql"
+# import Alojamiento from "alojamiento.graphql"
+
+type comentario{
+    _id:ID
+    cComentario:String!
+    alojamiento:Alojamiento
+    usuario:Usuario
+    
+}
+
+input createComentarioInput {
+    cComentario:String!
+    alojamiento:Alojamiento!
+    Usuario:Usuario!
+}

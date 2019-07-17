@@ -1,0 +1,11 @@
+
+type Servicio{
+    _id:ID
+    nombre:String!
+    descripcion:String!
+}
+
+input createServicioInput {
+    nombre:String!
+    descripcion:String!
+}

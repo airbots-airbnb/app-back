@@ -1,0 +1,34 @@
+# import Direccion from "direccion.graphql"
+
+
+type Usuario{
+    _id:ID
+    cUsuario:String!
+    cPassword:String!
+    cNombre:String!
+    cPrimerApellido:String!
+    cSegundoApellido:String!
+    cCorreo:String!
+    cSexo:SEXO!
+    iTelefono:Int
+    cDireccion:Direccion
+}
+
+input createUsuarioInput{
+    cUsuario:String!
+    cPassword:String!
+    cNombre:String!
+    cPrimerApellido:String!
+    cSegundoApellido:String!
+    cCorreo:String!
+    cSexo:SEXO!
+    iTelefono:Int
+
+}
+
+#Enum
+enum SEXO{
+    H
+    M
+    O
+}

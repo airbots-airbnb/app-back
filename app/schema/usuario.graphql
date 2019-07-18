@@ -1,34 +1,47 @@
 # import Direccion from "direccion.graphql"
 
-
-type Usuario{
-    _id:ID
-    cUsuario:String!
-    cPassword:String!
-    cNombre:String!
-    cPrimerApellido:String!
-    cSegundoApellido:String!
-    cCorreo:String!
-    cSexo:SEXO!
-    iTelefono:Int
-    cDireccion:Direccion
+type Usuario {
+  _id: ID
+  usuario: String!
+  password: String!
+  nombre: String!
+  primerapellido: String!
+  segundoapellido: String!
+  correo: String!
+  sexo: SEXO!
+  telefono: Int
+  direccion: Direccion
+  idioma: IDIOMA
+  moneda: MONEDA
 }
 
-input createUsuarioInput{
-    cUsuario:String!
-    cPassword:String!
-    cNombre:String!
-    cPrimerApellido:String!
-    cSegundoApellido:String!
-    cCorreo:String!
-    cSexo:SEXO!
-    iTelefono:Int
-
+input createUsuarioInput {
+  usuario: String!
+  password: String!
+  nombre: String!
+  primerapellido: String!
+  segundoapellido: String!
+  correo: String!
+  sexo: SEXO!
+  telefono: Int
+  idioma: IDIOMA
+  moneda: MONEDA
 }
 
 #Enum
-enum SEXO{
-    H
-    M
-    O
+enum SEXO {
+  Hombre
+  Mujer
+  Otro
+}
+
+enum IDIOMA {
+  Ingles
+  Espanol
+}
+
+enum MONEDA {
+  Dolar
+  Peso
+  Euro
 }

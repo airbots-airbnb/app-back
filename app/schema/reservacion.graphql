@@ -6,9 +6,6 @@ type reservacion{
     fechaInicio:String!
     fechafin:String!
     alojamiento:Alojamiento
-<<<<<<< Updated upstream
-    usuario:Usuario 
-=======
     usuario:Usuario
     
 }
@@ -18,5 +15,4 @@ input createReservacionInput {
     fechafin:String!
     alojamiento:Alojamiento!
     usuario:Usuario!
->>>>>>> Stashed changes
 }

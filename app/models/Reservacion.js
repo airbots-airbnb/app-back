@@ -1,9 +1,8 @@
-/*Jesus Quintal*/
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ReservacionSchema = new Schema({
-	fechaInicio: {
+	fechainicio: {
 		type: String,
 	},
 	fechafin: {

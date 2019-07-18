@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DireccionSchema = new Schema({
-	cCalle: {
+	calle: {
 		type: String,
 	},
-	cColonia: {
+	colonia: {
 		type: String,
 	},
-	cEstado: {
+	estado: {
 		type: String,
 	},
-	cNumero: {
+	numero: {
 		type: String,
 	},
-	cPais: {
+	pais: {
 		type: String,
 	},
 }, { collection: 'direccion', timestamps: true });

@@ -2,6 +2,7 @@ const AlojamientoModel =  require('../models/Alojamiento');
 const DireccionModel =  require('../models/Direccion');
 const UsuarioModel = require('../models/Usuario');
 const ServicioModel = require('../models/Servicio');
+const ComentarioModel = require('../models/Comentario');
 
 //#region Alojamiento
 /**
@@ -60,10 +61,17 @@ const listServicios = async (root, params, context, info) => {
 };
 //#endregion
 
+const listComentarios = async(root, params, context, info) => {
+
+	const comentario = await ComentarioModel.find({});
+
+	return comentario;
+};
 
 module.exports = {
 	listAlojamientos,
 	listDirecciones,
 	listUsuarios,
 	listServicios,
+	listComentarios
 };

@@ -2,14 +2,16 @@
 # import Servicio from "schema/servicio.graphql"
 # import Usuario from "schema/usuario.graphql"
 # import Alojamiento from "schema/alojamiento.graphql"
+# import comentario from "Schema/comentario.graphql"
 
 directive @auth on FIELD_DEFINITION | FIELD
 
-type Query {
-  listAlojamientos: [Alojamiento]
-  listDirecciones: [Direccion]
-  listUsuarios: [Usuario]
-  listServicios: [Servicio]
+type Query{
+    listAlojamientos:[Alojamiento]
+    listDirecciones:[Direccion]
+    listUsuarios:[Usuario]
+    listServicios:[Servicio]
+    listComentarios:[comentario]
 }
 
 type Mutation {

@@ -2,7 +2,12 @@
 # import Servicio from "schema/servicio.graphql"
 # import Usuario from "schema/usuario.graphql"
 # import Alojamiento from "schema/alojamiento.graphql"
+<<<<<<< Updated upstream
 # import Comentario from "Schema/comentario.graphql"
+=======
+# import comentario from "Schema/comentario.graphql"
+# import reservacion from "Schema/reservacion.graphql"
+>>>>>>> Stashed changes
 
 directive @auth on FIELD_DEFINITION | FIELD
 
@@ -11,6 +16,7 @@ type Query{
     listDirecciones:[Direccion]
     listUsuarios:[Usuario]
     listServicios:[Servicio]
+<<<<<<< Updated upstream
     listComentarios:[Comentario]
 }
 
@@ -20,6 +26,20 @@ type Mutation {
   createUsuario(data: createUsuarioInput): Usuario!
   createServicio(data: createServicioInput!): Servicio!
   login(correo: String!, password: String!): Auth!
+=======
+    listComentarios:[comentario]
+    listReservaciones:[reservacion]
+}
+
+type Mutation{
+    createAlojamiento(data:createAlojamientoInput!):Alojamiento!
+    updateAlojamiento(id:ID!,data:updateAlojamientoInput!):Alojamiento!
+    createUsuario(data:createUsuarioInput):Usuario!
+    createServicio(data:createServicioInput!):Servicio!
+    login(cCorreo:String!,cPassword:String!):Auth!
+    createComentario(data:createComentarioInput):comentario!
+    createReservacion(data:createReservacionInput):reservacion!
+>>>>>>> Stashed changes
 }
 
 type Auth {

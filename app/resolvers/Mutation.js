@@ -2,6 +2,8 @@ const AlojamientoModel = require('../models/Alojamiento');
 const UsuarioModel = require('../models/Usuario');
 const authenticate = require('../utils/authenticate');
 const ServicioModel = require('../models/Servicio');
+const ComentarioModel = require('../models/Comentario');
+const ReservacionModel = require('../models/Reservacion');
 
 /**
  * Función para crear un alojamiento.
@@ -97,6 +99,31 @@ const login = async (root, params, context, info) => {
 };
 
 
+
+const createComentario = async (root, params, context, info) => {
+
+	const comentario = await ComentarioModel.create(params.data)
+		.catch(e => { throw new Error(e.message); });
+
+	if (!comentario) throw new Error('No se creo el comentario');
+
+	return comentario.toObject();
+};
+
+
+const createReservacion = async (root, params, context, info) => {
+
+	const reservacion = await ReservacionModel.create(params.data)
+		.catch(e => { throw new Error(e.message); });
+
+	if (!reservacion) throw new Error('No se creo la reservación');
+
+	return reservacion.toObject();
+};
+
+
+
+
 //#region
 
 module.exports = {
@@ -104,5 +131,7 @@ module.exports = {
 	updateAlojamiento,
 	createUsuario,
 	createServicio,
+	createComentario,
+	createReservacion,
 	login
 };

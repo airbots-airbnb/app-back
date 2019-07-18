@@ -3,6 +3,7 @@ const DireccionModel =  require('../models/Direccion');
 const UsuarioModel = require('../models/Usuario');
 const ServicioModel = require('../models/Servicio');
 const ComentarioModel = require('../models/Comentario');
+const ReservacionModel = require('../models/Reservacion');
 
 //#region Alojamiento
 /**
@@ -61,17 +62,45 @@ const listServicios = async (root, params, context, info) => {
 };
 //#endregion
 
+
+//#Region Comentarios
+/**
+ * Función para obtener todos los servicios.
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
 const listComentarios = async(root, params, context, info) => {
 
 	const comentario = await ComentarioModel.find({});
 
 	return comentario;
 };
+//#endregion
+
+//#Region Reservaciones
+/**
+ * Función para obtener todos los servicios.
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
+const listReservaciones = async(root, params, context, info) => {
+
+	const reservacion = await ReservacionModel.find({});
+
+	return reservacion;
+};
+//#Reservaciones
+
 
 module.exports = {
 	listAlojamientos,
 	listDirecciones,
 	listUsuarios,
 	listServicios,
-	listComentarios
+	listComentarios,
+	listReservaciones
 };

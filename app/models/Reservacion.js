@@ -16,6 +16,6 @@ const ReservacionSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'usuario'
 	}
-}, { collection: 'reservacion', timestamps: true });
+}, { collection: 'reservaciones', timestamps: true });
 
 module.exports = mongoose.model('reservacion', ReservacionSchema);

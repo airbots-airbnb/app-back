@@ -1,12 +1,11 @@
 # import Usuario from "usuario.graphql"
 # import Alojamiento from "alojamiento.graphql"
 
-type comentario{
+type Comentario{
     _id:ID
-    cComentario:String!
+    comentario:String!
     alojamiento:Alojamiento
     usuario:Usuario
-    
 }
 
 input createComentarioInput {

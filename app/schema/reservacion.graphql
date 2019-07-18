@@ -6,6 +6,5 @@ type Reservacion{
     fechaInicio:String!
     fechafin:String!
     alojamiento:Alojamiento
-    usuario:Usuario
-    
+    usuario:Usuario 
 }

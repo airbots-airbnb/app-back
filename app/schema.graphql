@@ -5,27 +5,22 @@
 
 directive @auth on FIELD_DEFINITION | FIELD
 
-type Query{
-    listAlojamientos:[Alojamiento]
-    listDirecciones:[Direccion]
-    listUsuarios:[Usuario]
-    listServicios:[Servicio]
+type Query {
+  listAlojamientos: [Alojamiento]
+  listDirecciones: [Direccion]
+  listUsuarios: [Usuario]
+  listServicios: [Servicio]
 }
 
-type Mutation{
-    createAlojamiento(data:createAlojamientoInput!):Alojamiento!
-    updateAlojamiento(id:ID!,data:updateAlojamientoInput!):Alojamiento!
-    createUsuario(data:createUsuarioInput):Usuario!
-    createServicio(data:createServicioInput!):Servicio!
-    login(cCorreo:String!,cPassword:String!):Auth!
+type Mutation {
+  createAlojamiento(data: createAlojamientoInput!): Alojamiento!
+  updateAlojamiento(id: ID!, data: updateAlojamientoInput!): Alojamiento!
+  createUsuario(data: createUsuarioInput): Usuario!
+  createServicio(data: createServicioInput!): Servicio!
+  login(correo: String!, password: String!): Auth!
 }
 
-type Auth{
-    token:String!
-    message:String!
+type Auth {
+  token: String!
+  message: String!
 }
-
-
-
-
-

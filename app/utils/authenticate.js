@@ -1,26 +1,25 @@
-const bcrypt = require('bcrypt');
-const UsuarioModel = require('../models/Usuario');
-const createToken = require('./createToken');
+const bcrypt = require("bcrypt");
+const UsuarioModel = require("../models/Usuario");
+const createToken = require("./createToken");
 
-const authenticate=({cCorreo,cPassword})=>{
-
+const authenticate = ({ correo, password }) => {
 	//resove: lo que espero de la promes
 	//reject: cuando ocurre algo que no espero
-	return new Promise((resolve,reject)=>{
+	return new Promise((resolve, reject) => {
+		UsuarioModel.findOne({ correo })
+			.then(user => {
+				if (!user) reject(new Error("usuario no existe"));
 
-		UsuarioModel.findOne({cCorreo}).then((user)=>{
+				bcrypt.compare(password, user.password, (err, isValid) => {
+					if (err) reject(new Error("Error al crear el Token"));
 
-			if (!user) reject(new Error('usuario no existe'));
-
-			bcrypt.compare(cPassword,user.cPassword,(err,isValid)=>{
-
-				if (err) reject(new Error('Error al crear el Token'));
-
-				isValid ? resolve(createToken(user)) : reject('Password no coinciden');
-
-			});
-		}).catch(e  => reject(e) );
+					isValid
+						? resolve(createToken(user))
+						: reject("Password no coinciden");
+				});
+			})
+			.catch(e => reject(e));
 	});
 };
 
-module.exports=authenticate;
+module.exports = authenticate;

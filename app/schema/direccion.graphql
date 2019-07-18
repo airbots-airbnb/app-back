@@ -1,9 +1,9 @@
 #Direccion
 type Direccion{
     _id:ID
-    cCalle:String
-    cColonia:String
-    CEstado:String
-    cNumero:String
-	cPais:String
+    calle:String
+    colonia:String
+    estado:String
+    numero:String
+	pais:String
 }

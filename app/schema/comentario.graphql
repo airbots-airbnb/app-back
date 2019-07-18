@@ -4,12 +4,12 @@
 type Comentario{
     _id:ID
     comentario:String!
-    alojamiento:Alojamiento
-    usuario:Usuario
+    #alojamiento:Alojamiento
+    #usuario:Usuario
 }
 
 input createComentarioInput {
-    cComentario:String!
-    alojamiento:Alojamiento!
-    Usuario:Usuario!
+    comentario:String!
+    #alojamiento:Alojamiento
+    #Usuario:Usuario
 }

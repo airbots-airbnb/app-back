@@ -24,6 +24,7 @@ input createUsuarioInput {
   correo: String!
   sexo: SEXO!
   telefono: Int
+  #direccion: Direccion
   idioma: IDIOMA
   moneda: MONEDA
 }

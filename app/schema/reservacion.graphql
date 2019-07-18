@@ -1,22 +1,17 @@
 # import Usuario from "usuario.graphql"
 # import Alojamiento from "alojamiento.graphql"
 
-type reservacion{
+type Reservacion{
     _id:ID
     fechaInicio:String!
     fechafin:String!
-    alojamiento:Alojamiento
-<<<<<<< Updated upstream
-    usuario:Usuario 
-=======
-    usuario:Usuario
-    
+    #alojamiento:Alojamiento
+    #usuario:Usuario
 }
 
 input createReservacionInput {
     fechaInicio:String!
     fechafin:String!
-    alojamiento:Alojamiento!
-    usuario:Usuario!
->>>>>>> Stashed changes
+    #alojamiento:Alojamiento
+    #usuario:Usuario
 }

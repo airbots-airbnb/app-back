@@ -23,7 +23,7 @@ type Mutation {
   createServicio(data: createServicioInput!): Servicio!
   createComentario(data: createComentarioInput): Comentario!
   createReservacion(data: createReservacionInput!): Reservacion!
-  login(cCorreo: String!, cPassword: String!): Auth!
+  login(correo: String!, password: String!): Auth!
 }
 
 type Auth {

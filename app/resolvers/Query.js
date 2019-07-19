@@ -15,7 +15,7 @@ const ReservacionModel = require('../models/Reservacion');
  */
 const listAlojamientos = async (root, params, context, info) => {
 
-	const alojamientos = await AlojamientoModel.find({});
+	const alojamientos = await AlojamientoModel.find({}).populate('usuario');
 
 	return alojamientos;
 };

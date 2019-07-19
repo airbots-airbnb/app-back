@@ -21,6 +21,10 @@ const AlojamientoSchema = new Schema({
 	precio: {
 		type: Number
 	},
+	usuario: {
+		type: Schema.Types.ObjectId,
+		ref: 'usuario' 
+	},
 	disposicion_huespedes: {
 		type: String,
 		enum: ['Entero', 'Privado', 'Compartido']

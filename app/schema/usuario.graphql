@@ -4,7 +4,7 @@ type Usuario {
   _id: ID
   usuario: String!
   password: String!
-  nombre: String!
+  nombre: String
   primerapellido: String!
   segundoapellido: String!
   correo: String!

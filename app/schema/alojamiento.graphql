@@ -1,4 +1,5 @@
-#Alojamiento
+# import Usuario from "usuario.graphql"
+
 type Alojamiento{
     _id:ID
     descripcion:String!
@@ -9,6 +10,7 @@ type Alojamiento{
     precio:Int!
     disposicion_huespedes:String
     tipo_alojamiento:TIPOALOJAMIENTO
+    usuario:Usuario
     fotos:[String]
     espacio_exclusivo:Boolean
 }

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const UsuarioSchema = new Schema(
@@ -31,36 +31,36 @@ const UsuarioSchema = new Schema(
 		},
 		sexo: {
 			type: String,
-			enum: ["Hombre", "Mujer", "Otro"]
+			enum: ['Hombre', 'Mujer', 'Otro']
 		},
 		telefono: {
 			type: Number
 		},
 		direccion: {
 			type: Schema.Types.ObjectId,
-			ref: "direccion"
+			ref: 'direccion'
 		},
 		idioma: {
 			type: String,
-			enum: ["Ingles", "Espanol"]
+			enum: ['Ingles', 'Espanol']
 		},
 		moneda: {
 			type: String,
-			enum: ["Dolar", "Peso", "Euro"]
+			enum: ['Dolar', 'Peso', 'Euro']
 		}
 	},
-	{ collection: "usuarios", timestamps: true }
+	{ collection: 'usuarios', timestamps: true }
 );
 
 /**
  * Se ejecuta antes de guardar un usuario.
  */
-UsuarioSchema.pre("save", function(next) {
+UsuarioSchema.pre('save', function(next) {
 	const usuario = this;
 	const SALT_FACTOR = 10;
 
 	//Se valida si el password se modificó
-	if (!usuario.isModified("password")) {
+	if (!usuario.isModified('password')) {
 		return next();
 	}
 
@@ -75,4 +75,4 @@ UsuarioSchema.pre("save", function(next) {
 	});
 });
 
-module.exports = mongoose.model("usuario", UsuarioSchema);
+module.exports = mongoose.model('usuario', UsuarioSchema);

@@ -7,39 +7,49 @@ const ReservacionModel = require('../models/Reservacion');
 
 /**
  * Función para crear un alojamiento.
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
+ * @param {*} root
+ * @param {*} params
+ * @param {*} context
+ * @param {*} info
  */
 const createAlojamiento = async (root, params, context, info) => {
+	
+	const { user } = context;
+	params.data.usuario = user._id;
 
-	const Alojamiento = await AlojamientoModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
+	const Alojamiento = await AlojamientoModel.create(params.data).catch(e => {
+		throw new Error(e.message);
+	});
 
-	if (!Alojamiento) throw new Error('No se creo el Alojamiento');
+	const newAlojamiento = await AlojamientoModel.findOne({
+		_id: Alojamiento._id
+	}).populate('usuario');
 
-	return Alojamiento.toObject();
+	await AlojamientoModel.findByIdAndUpdate(user.id, {
+		$push: { alojamientos: Alojamiento }
+	}).catch(e => {
+		throw new Error('Error al actualizar el alojamiento.' + e);
+	});
+
+	return newAlojamiento;
 };
 
 /**
  * Función para actualizar los datos de un alojamiento.
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
+ * @param {*} root
+ * @param {*} params
+ * @param {*} context
+ * @param {*} info
  */
 const updateAlojamiento = async (root, params, context, info) => {
-
 	const { data } = params;
 	const { user } = context;
 
 	let Alojamiento = await AlojamientoModel.findById(user._id);
 
-	if (!Alojamiento)
-		throw new Error('El Alojamiento no existe');
+	if (!Alojamiento) throw new Error('El Alojamiento no existe');
 
-	Object.keys(data).map(key => Alojamiento[key] = data[key]);
+	Object.keys(data).map(key => (Alojamiento[key] = data[key]));
 
 	const AlojamientoActualizado = await Alojamiento.save({ new: true });
 
@@ -48,15 +58,15 @@ const updateAlojamiento = async (root, params, context, info) => {
 
 /**
  * Función para crear un servicio.
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
+ * @param {*} root
+ * @param {*} params
+ * @param {*} context
+ * @param {*} info
  */
 const createServicio = async (root, params, context, info) => {
-
-	const Servicio = await ServicioModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
+	const Servicio = await ServicioModel.create(params.data).catch(e => {
+		throw new Error(e.message);
+	});
 
 	if (!Servicio) throw new Error('No se creo el Servicio');
 
@@ -66,15 +76,15 @@ const createServicio = async (root, params, context, info) => {
 //#region Usuarios
 /**
  * Función para crear un usuario
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
+ * @param {*} root
+ * @param {*} params
+ * @param {*} context
+ * @param {*} info
  */
 const createUsuario = async (root, params, context, info) => {
-
-	const usuario = await UsuarioModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
+	const usuario = await UsuarioModel.create(params.data).catch(e => {
+		throw new Error(e.message);
+	});
 
 	if (!usuario) throw new Error('No se creo el usuario');
 
@@ -82,15 +92,16 @@ const createUsuario = async (root, params, context, info) => {
 };
 
 /**
- * 
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
+ *
+ * @param {*} root
+ * @param {*} params
+ * @param {*} context
+ * @param {*} info
  */
 const login = async (root, params, context, info) => {
-
-	const token = await authenticate(params).catch(e => { throw e; });
+	const token = await authenticate(params).catch(e => {
+		throw e;
+	});
 
 	return {
 		token,
@@ -98,31 +109,25 @@ const login = async (root, params, context, info) => {
 	};
 };
 
-
-
 const createComentario = async (root, params, context, info) => {
-
-	const comentario = await ComentarioModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
+	const comentario = await ComentarioModel.create(params.data).catch(e => {
+		throw new Error(e.message);
+	});
 
 	if (!comentario) throw new Error('No se creo el comentario');
 
 	return comentario.toObject();
 };
 
-
 const createReservacion = async (root, params, context, info) => {
-
-	const reservacion = await ReservacionModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
+	const reservacion = await ReservacionModel.create(params.data).catch(e => {
+		throw new Error(e.message);
+	});
 
 	if (!reservacion) throw new Error('No se creo la reservación');
 
 	return reservacion.toObject();
 };
-
-
-
 
 //#region
 

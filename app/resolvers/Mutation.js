@@ -110,13 +110,15 @@ const login = async (root, params, context, info) => {
 };
 
 const createComentario = async (root, params, context, info) => {
-	const comentario = await ComentarioModel.create(params.data).catch(e => {
-		throw new Error(e.message);
-	});
 
-	if (!comentario) throw new Error('No se creo el comentario');
+	const {user} = context;
+	params.data.usuario = user._id;
+	
+	const comentario = await ComentarioModel.create(params.data).catch( e => {throw new Error('Error al crear Comentario');} );
+	const newComentario = await ComentarioModel.findOne({_id:comentario._id}).populate('usuario');
+	await ComentarioModel.findByIdAndUpdate(user.id,{$push:{comentarios:comentario}});
+	return newComentario;
 
-	return comentario.toObject();
 };
 
 const createReservacion = async (root, params, context, info) => {
